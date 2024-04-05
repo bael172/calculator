@@ -1,0 +1,48 @@
+.body{
+    font-size:large;
+    font-family:monospace;
+}
+.button-field{
+    display:grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-auto-rows: minmax(10px,auto);
+    grid-column-gap: 10px;
+    grid-row-gap:10px;
+}
+.screen{
+    width:400px;
+    border:1px solid black;
+    height:100px;
+    margin-bottom: 1em;
+    font-size:2em;
+}
+button{
+    align-items:center;
+    text-align:center;
+    padding:0.4em 0.6em;
+    border-radius:10%;
+    font-size:3rem;
+
+    transition-property: background-color;
+    transition-duration: 0.2s;
+}
+button:hover{
+    background-color: rgb(209, 209, 209);
+    cursor: pointer;
+}
+@keyframes darkening_btn{
+    from{
+
+    }
+    to{
+
+    }
+}
+#backspace img{
+    display:block;
+    width:1em;
+    height:1em;
+}
+.btn_0{
+    grid-column:1/3
+}
