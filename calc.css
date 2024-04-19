@@ -9,7 +9,7 @@
     grid-column-gap: 10px;
     grid-row-gap:10px;
 }
-.screen{
+#screen{
     width:400px;
     border:1px solid black;
     height:100px;
@@ -17,13 +17,14 @@
     font-size:2em;
 }
 button{
+    line-height: 50px;
     align-items:center;
     text-align:center;
     padding:0.4em 0.6em;
-    border-radius:10%;
+    border-radius:5px;
     font-size:3rem;
 
-    transition-property: background-color;
+    transition-property: background-color, color;
     transition-duration: 0.2s;
 }
 button:hover{
@@ -32,10 +33,32 @@ button:hover{
 }
 @keyframes darkening_btn{
     from{
-
+        background-color: rgb(223, 223, 223);
+        color: black
     }
     to{
-
+        background-color:rgb(187, 187, 187);
+        color:rgb(94, 94, 94)
+    }
+}
+@keyframes rotation3D{
+    0% {
+        transform: scale(1,1)
+    }
+    20% {
+        transform: scale(0.6,1)
+    }
+    40%{
+        transform: scale(0.2,1)
+    }
+    60%{
+        tranform: scale(-0.2,1)
+    }
+    80% {
+        transform: scale(-0.6,1)
+    }
+    100% {
+        transform: scale(-1,1)
     }
 }
 #backspace img{
