@@ -30,7 +30,7 @@
     height:100px;
     margin-bottom: 1em;
     font-size:2em;
-    align-items: bottom;
+    vertical-align:bottom;
 }
 button{
     line-height: 50px;
