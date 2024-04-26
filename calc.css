@@ -9,12 +9,28 @@
     grid-column-gap: 10px;
     grid-row-gap:10px;
 }
-#screen{
+.pole{
+    display:block;
+}
+#error_screen{
+    position:absolute;
+    box-sizing: border-box;
+    text-align: right;
     width:400px;
+    height:1em;
+    top:20px;
+    left:3%;
+    border:none;
+    font-size:2em;
+}
+#screen{
+    display:flex;
+    width:420px;
     border:1px solid black;
     height:100px;
     margin-bottom: 1em;
     font-size:2em;
+    align-items: bottom;
 }
 button{
     line-height: 50px;
