@@ -39,32 +39,56 @@ const equal = document.querySelector(".equal")
 countClick=0;
 equal.addEventListener('click',function(e){
     countClick++;
-    let array = inputField.value.split('')
+    let array = inputField.value.match(/[+-/*]|[\d.]+/g) //Разбиваем строку на операторы и числа
     const operators = ['+','-','*','/']
-    let firstArray = []
-    let secondArray = []
-    let item
-    let thirdArray = []
+    let firstNumber = []
+    let secondNumber = []
+    let operatorIndex = -1 //инициализируем индекс арифм. оператора
+    let operator //сам оператор
     for(let i=0;i<array.length;i++){
+        console.log('Type of operator:', typeof array[i])
         if(operators.includes(array[i])){
-            item=array[i]
-            firstArray = array.slice(0,i)
-            secondArray = array.slice(i+1,array.length)
+            operatorIndex=i
+            operator = array[i]
             break
         }
+        else console.log("Не обнаружены +-/* 1")
     }
+    if(operatorIndex!==-1){
+        firstNumber = array.slice(0,operatorIndex)
+        secondNumber = array.slice(operatorIndex+1)
+    }
+    else console.log("Не обнаружены +-/* 2")
     //результат выполнения filter - новый массив
-    firstArray = firstArray.filter(element => typeof(element)==='number') // элемент массива element возвращает typeof(element)==='number' которое представляет собой true или false
-    secondArray = secondArray.filter(element => typeof(element)==='number') //если возвращается true element сохраняется в массиве, если false то элемент не включается в массив
-    /*запись сверху это то же самое что secondArray.filter(
+    firstNumber = firstNumber.filter(element => typeof(element)==='number') // элемент массива element возвращает typeof(element)==='number' которое представляет собой true или false
+    secondNumber = secondNumber.filter(element => typeof(element)==='number') //если возвращается true element сохраняется в массиве, если false то элемент не включается в массив
+    /*запись сверху это то же самое что secondNumber.filter(
         function(element){return typeof(element)==='number'}
     )*/
-    //в резульате filter() в firstArray и secondArray записываются только числа
-    thirdArray.push(...firstArray.map(element=>parseInt(element)))//... это оператор для передачи не всего массива, а его элементов последовательно
-    thirdArray.push(parseInt(item))
-    thirdArray.push(...secondArray.map(element=>parseInt(element)))
+    //в резульате filter() в firstNumber и secondNumber записываются только числа
+    console.log('inputField.value:', inputField.value);
+    console.log('array:', array);
+    console.log('operators:', operators);
+    
+
+    let number1 = []
+    number1.push(...firstNumber.map(element=>parseInt(element)))//... это оператор для передачи не всего массива, а его элементов последовательно
+    number1.join("")
+    console.log(number1)
+    //thirdArray.push(item)
+    let number2 = []
+    number2.push(...secondNumber.map(element=>parseInt(element)))
+    number2.join("")
+    console.log(number2)
+    let result //результат операции
+    switch(operator){
+        case("+"): result=number1+number2; break
+        case("-"): result=number1-number2; break
+        case("*"): result=number1*number2; break
+        case("/"): result=number1/number2; break
+    }
     //запись результата в поле ввода
-    let result = thirdArray.join("") //[8,6,5] преобразуется в 865
+
     inputField.value = result
     /*
     function findOperator(operator) {
